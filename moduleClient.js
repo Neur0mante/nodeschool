@@ -1,15 +1,12 @@
-var fs = require('fs');
-var path = require('path');
-var ls = require('./lsmodule');
+var filterFn = require('./lsmodule.js')
+var dir = process.argv[2]
+var filterStr = process.argv[3]
 
-var folder = process.argv[2];
-var ext = process.argv[3];
+filterFn(dir, filterStr, function (err, list) {
+  if (err)
+    return console.error('There was an error:', err)
 
-callback = function(err,data){
-	if(err) return console.log(err);	
-	data.forEach(function(value){
-		console.log(value);		
-	});
-}
-
-ls(folder,ext,callback);
+  list.forEach(function (file) {
+    console.log(file)
+  })
+})
