@@ -2,6 +2,7 @@ http = require('http');
 
 var address = process.argv[2];
 
+
 http.get(address, function (response) {
 	var receivedA = new Array();
 	response.setEncoding("utf8");
